@@ -1,7 +1,6 @@
 require "circle_reaper/app"
-require "circle_reaper/pull_request"
-require "circle_reaper/structure_builder"
 require "circle_reaper/circle_worker"
+require "circle_reaper/pull_request"
 
 module CircleReaper
   def self.github_client

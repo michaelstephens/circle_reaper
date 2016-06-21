@@ -1,7 +1,6 @@
 require "sinatra"
 require "json"
 require "active_support/hash_with_indifferent_access"
-
 require "circle_reaper/circle_worker"
 
 module CircleReaper
@@ -16,8 +15,8 @@ module CircleReaper
         object_class: HashWithIndifferentAccess
       )
 
-      if payload.fetch(:comment).fetch(:body).include?("circle_reaper")
-        StructureWorker.perform_async(payload)
+      unless payload.fetch(:comment).fetch(:body).include?("[run circle]")
+        CircleWorker.perform_async(payload)
       end
     end
   end
