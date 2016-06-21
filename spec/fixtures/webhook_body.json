@@ -100,7 +100,7 @@
     },
     "created_at": "2015-12-16T01:24:04Z",
     "updated_at": "2015-12-16T01:24:04Z",
-    "body": "Test comment @pipefitter"
+    "body": "Test comment [run circle]"
   },
   "sender": {
     "login": "mikeastock",

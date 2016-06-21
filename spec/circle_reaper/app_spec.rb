@@ -17,7 +17,7 @@ RSpec.describe CircleReaper::App do
   describe "POST /payload" do
     context "comment body includes pipfitter" do
       it "process's a Github webhook payload" do
-        body = File.read("spec/fixtures/webhook_body.json")
+        body = File.read("spec/fixtures/webhook_body_without_run_circle.json")
         expect(CircleReaper::CircleWorker).to receive(:perform_async)
 
         post "/payload", body
@@ -26,7 +26,7 @@ RSpec.describe CircleReaper::App do
 
     context "comment body does not include pipfitter" do
       it "skips processing request" do
-        body = File.read("spec/fixtures/webhook_body_without_pipefitter.json")
+        body = File.read("spec/fixtures/webhook_body.json")
         expect(CircleReaper::CircleWorker).to_not receive(:perform_async)
 
         post "/payload", body
