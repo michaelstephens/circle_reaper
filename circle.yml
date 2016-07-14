@@ -2,7 +2,8 @@ machine:
   environment:
     CIRCLECI_TOKEN: test
     GITHUB_TOKEN: test
-    REDIS_URL: redis://localhost:6379/
+  services:
+    - redis
 
 deployment:
   production:

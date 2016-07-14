@@ -1,6 +1,8 @@
 require "bundler"
 Bundler.require
 
+Dotenv.load
+
 require "circle_reaper"
 
 RSpec.configure do |config|
