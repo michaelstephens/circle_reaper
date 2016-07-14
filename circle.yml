@@ -1,0 +1,9 @@
+machine:
+  environment:
+    CIRCLECI_TOKEN: test
+
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: circle-reaper
