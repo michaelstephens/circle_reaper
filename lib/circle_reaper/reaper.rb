@@ -1,8 +1,6 @@
-require "sidekiq"
-
 module CircleReaper
-  class CircleWorker
-    def perform(payload)
+  class Reaper
+    def reap(payload)
       owner  = payload.fetch(:repository).fetch(:owner).fetch(:name)
       repo   = payload.fetch(:repository).fetch(:name)
       branch = payload.fetch(:ref).split('/').last
