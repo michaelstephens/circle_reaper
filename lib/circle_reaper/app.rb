@@ -18,8 +18,7 @@ module CircleReaper
         object_class: HashWithIndifferentAccess
       )
       logger.info(payload)
-
-      unless payload.fetch(:comment).fetch(:body).include?("[run circle]")
+      unless payload.fetch(:commits).reject{|c| c.fetch(:message).include?("[run circle]")}
         CircleWorker.perform_async(payload)
       end
     end
