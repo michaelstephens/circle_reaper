@@ -1,6 +1,5 @@
 require "active_support/core_ext/hash/indifferent_access"
 require "json"
-require "logger"
 
 module CircleReaper
   class App < Sinatra::Base
@@ -9,8 +8,6 @@ module CircleReaper
     end
 
     post "/payload" do
-      logger = Logger.new(STDOUT)
-
       payload = JSON.parse(
         request.body.read,
         object_class: HashWithIndifferentAccess
