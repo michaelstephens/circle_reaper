@@ -6,3 +6,7 @@ A Github bot that cancels redundant circle builds.
 
 
 Based on the fine work of [mikeastock's pipefitter](https://github.com/mikeastock/pipefitter)
+
+
+#### How to Run
+`rackup` && `sidekiq -C config/sidekiq.yml -r ./boot.rb`
