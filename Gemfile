@@ -7,8 +7,6 @@ gem "sinatra"
 gem "activesupport"
 gem "circleci"
 gem "dotenv"
-gem "git"
-gem "github_api"
 gem "sidekiq"
 
 group :development do
