@@ -1,7 +1,7 @@
 module CircleReaper
   class Reaper
     def reap(payload)
-      puts "I ran!"
+      puts "hitreaper"
       owner  = payload.fetch(:repository).fetch(:owner).fetch(:name)
       repo   = payload.fetch(:repository).fetch(:name)
       branch = payload.fetch(:ref).split('/').last

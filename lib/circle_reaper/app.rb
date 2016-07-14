@@ -20,6 +20,7 @@ module CircleReaper
       )
       logger.info(payload)
       unless payload.fetch(:commits).reject{|c| c.fetch(:message).include?("[run circle]")}
+        puts "RACK_ONLY_MODE: #{ENV.fetch("RACK_ONLY_MODE")}"
         if ENV.fetch("RACK_ONLY_MODE")
           Reaper.reap(payload)
         else
