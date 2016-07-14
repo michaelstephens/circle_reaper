@@ -8,8 +8,11 @@ A Github bot that cancels redundant circle builds.
 Based on the fine work of [mikeastock's pipefitter](https://github.com/mikeastock/pipefitter)
 
 
-#### How to Run
+### How to Run
 `rackup` && `sidekiq -C config/sidekiq.yml -r ./boot.rb`
+
+#### Note
+If the env variable "RACK_ONLY_MODE" is set to `true` you can run the entire application with `rackup`
 
 
 ### Limitations
