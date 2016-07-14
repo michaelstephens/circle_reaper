@@ -15,19 +15,19 @@ RSpec.describe CircleReaper::App do
   end
 
   describe "POST /payload" do
-    context "comment body includes pipfitter" do
-      it "process's a Github webhook payload" do
+    context "commit message includes [run circle]" do
+      it "skips processing request" do
         body = File.read("spec/fixtures/webhook_body_without_run_circle.json")
-        expect(CircleReaper::CircleWorker).to receive(:perform_async)
+        expect(CircleReaper::CircleWorker).to_not receive(:perform_async)
 
         post "/payload", body
       end
     end
 
-    context "comment body does not include pipfitter" do
-      it "skips processing request" do
+    context "commit message does not include [run circle]" do
+      it "process's a Github webhook payload" do
         body = File.read("spec/fixtures/webhook_body.json")
-        expect(CircleReaper::CircleWorker).to_not receive(:perform_async)
+        expect(CircleReaper::CircleWorker).to receive(:perform_async)
 
         post "/payload", body
       end

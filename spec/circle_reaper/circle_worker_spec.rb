@@ -2,7 +2,7 @@ RSpec.describe CircleReaper::CircleWorker do
   describe "#perform" do
     let(:owner) { "mikestephens" }
     let(:repo) { "tweeter" }
-    let(:number) { 1 }
+    let(:ref) { "refs/head/test" }
     let(:payload) do
       {
         repository: {
@@ -11,9 +11,7 @@ RSpec.describe CircleReaper::CircleWorker do
             login: owner
           }
         },
-        issue: {
-          number: number
-        }
+        ref: ref
       }
     end
   end
