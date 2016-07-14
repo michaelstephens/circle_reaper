@@ -1,9 +1,5 @@
-require "sinatra"
+require "active_support/core_ext/hash/indifferent_access"
 require "json"
-require "active_support/hash_with_indifferent_access"
-require "circle_reaper/circle_worker"
-require "circle_reaper/reaper"
-require 'logger'
 
 module CircleReaper
   class App < Sinatra::Base
@@ -12,20 +8,15 @@ module CircleReaper
     end
 
     post "/payload" do
-      logger = Logger.new(STDOUT)
-
       payload = JSON.parse(
         request.body.read,
         object_class: HashWithIndifferentAccess
       )
-      logger.info(payload)
-      puts "RACK_ONLY_MODE: #{  ENV.fetch("RACK_ONLY_MODE")}"
-      unless payload.fetch(:commits).reject{|c| c.fetch(:message).include?("[run circle]")}
-        if ENV.fetch("RACK_ONLY_MODE")
-          Reaper.reap(payload)
-        else
-          CircleWorker.perform_async(payload)
-        end
+
+      commits = payload.fetch(:commits)
+
+      if commits.none? { |commit| commit.fetch(:message).include?("[run circle]") }
+        CircleWorker.perform_async(payload)
       end
     end
   end
