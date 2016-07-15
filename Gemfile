@@ -5,6 +5,7 @@ ruby "2.3.1"
 gem "sinatra"
 
 gem "activesupport"
+gem "as-duration"
 gem "circleci"
 gem "dotenv"
 gem "sidekiq"
