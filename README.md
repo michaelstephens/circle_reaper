@@ -16,7 +16,7 @@ Based on the fine work of [mikeastock's pipefitter](https://github.com/mikeastoc
 - `REDIS_URL` set for redis
 - `SIDEKIQ_USERNAME` & `SIDEKIQ_PASSWORD` for sidekiq authentication
 - `CIRCLECI_TOKEN` for circle access
-- `SECRET_TOKEN` set this as the secret in the Github Webhook for authentication
+- `SECRET_TOKEN` set this as the secret in the Github Webhook for authentication (optional)
 
 ## How to use
 ### Setup
