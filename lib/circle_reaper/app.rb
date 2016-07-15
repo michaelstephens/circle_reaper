@@ -16,7 +16,7 @@ module CircleReaper
       commits = payload.fetch(:commits)
 
       if commits.none? { |commit| commit.fetch(:message).include?("[run circle]") }
-        CircleWorker.perform_async(payload)
+        CircleWorker.perform_in(30.seconds, payload)
       end
     end
   end
