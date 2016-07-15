@@ -2,7 +2,7 @@ machine:
   environment:
     CIRCLECI_TOKEN: test
     REDIS_URL: redis://localhost:6379/
-    SECRET_TOEKN: secretsecret
+    SECRET_TOKEN: secretsecret
   services:
     - redis
 
