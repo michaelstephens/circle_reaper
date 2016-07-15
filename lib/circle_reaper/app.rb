@@ -13,7 +13,7 @@ module CircleReaper
         object_class: HashWithIndifferentAccess
       )
 
-      if ENV.fetch('SECRET_TOKEN')
+      if ENV['SECRET_TOKEN']
         request.body.rewind
         payload_body = request.body.read
         verify_signature(payload_body)
