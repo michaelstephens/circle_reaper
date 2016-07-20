@@ -6,8 +6,7 @@ module CircleReaper
 
     def perform(json)
       self.payload = HashWithIndifferentAccess.new(json)
-
-      return if branch == "master"
+      return if branch == "master" || (ENV["TEST_BRANCH"] && ENV["TEST_BRANCH"] == branch)
 
       if builds.count > 1
         builds.drop(1).each do |build|

@@ -17,6 +17,7 @@ Based on the fine work of [mikeastock's pipefitter](https://github.com/mikeastoc
 - `SIDEKIQ_USERNAME` & `SIDEKIQ_PASSWORD` for sidekiq authentication
 - `CIRCLECI_TOKEN` for circle access
 - `SECRET_TOKEN` set this as the secret in the Github Webhook for authentication (optional)
+- `TEST_BRANCH` set this as a branch name and Circle Reaper will only run on that branch (optional)
 
 ## How to use
 ### Setup
