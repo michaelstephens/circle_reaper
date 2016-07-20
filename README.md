@@ -30,3 +30,6 @@ Based on the fine work of [mikeastock's pipefitter](https://github.com/mikeastoc
 ## Limitations
 - Right now if any commits in a push contain "[run circle]" all commits will run circle.
 - If you push right after a "[run circle]" commit, circle will be cancelled.
+
+## Local Testing
+I use [ngrok](https://ngrok.com/) and the command `ngrok http 9292`
