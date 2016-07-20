@@ -6,8 +6,7 @@ module CircleReaper
 
     def perform(json)
       self.payload = HashWithIndifferentAccess.new(json)
-
-      return if branch == "master"
+      return if disallow_branch?(branch)
 
       if builds.count > 1
         builds.drop(1).each do |build|
@@ -34,6 +33,10 @@ module CircleReaper
       CircleCi::Project.recent_builds_branch(owner, repo, branch).body
     end
 
+    def disallow_branch?(branch)
+      branch == "master" || (test_branch && branch != test_branch)
+    end
+
     def owner
       payload.fetch(:repository).fetch(:owner).fetch(:name)
     end
@@ -44,6 +47,10 @@ module CircleReaper
 
     def branch
       payload.fetch(:ref).split("/").last
+    end
+
+    def test_branch
+      ENV["TEST_BRANCH"]
     end
   end
 end
